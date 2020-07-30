@@ -14,7 +14,9 @@ function onSubmit() {
     document.getElementById("error").hidden = false;
   } else {
     console.log("Correct input");
-    fetch(`/json?year=${season}`)
+    fetch(`/json?year=${season}`, {
+      method: 'GET'
+    })
     .then(res => res.json())
     .then(data => visualizeExtraRunsByEachTeam(data));
   }
@@ -97,8 +99,6 @@ function visualizeWinningMatchesPerTeam(winningMatchesPerTeam) {
   }
 
   const years = Object.keys(winningTeams[0][1]);
-  console.log(years);
-  console.log(result);
 
   Highcharts.chart('winning-matches-per-team', {
     chart: {
@@ -197,7 +197,6 @@ function visualizeTopEconomicalBowlers(topEconomicalBowlers) {
   for (let bowler in topEconomicalBowlers) {
     data.push(topEconomicalBowlers[bowler]);
   }
-  console.log(data);
 
   Highcharts.chart("top-economical-bowlers", {
     chart: {
@@ -260,7 +259,6 @@ function visualizeWinningMatchesByEachTeamPerVenue(winningMatchesByEachTeamPerVe
   }
 
   const venues = Object.keys(winningTeams[0][1]);
-  console.log(venues);
 
   Highcharts.chart("winning-matches-by-each-team-per-year", {
     chart: {

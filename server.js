@@ -27,6 +27,7 @@ app.get("/json", function (req, res) {
                 result = data.extraRunsByEachTeam[items][elem];
         }
     }
+    console.log(result);
     res.json({ data: result });
 });
 
