@@ -14,7 +14,8 @@ function onSubmit() {
     document.getElementById("error").hidden = false;
   } else {
     console.log("Correct input");
-    fetch(`/json?year=${season}`, {
+    let url = `/json?year=${season}`;
+    fetch(url, {
       method: 'GET'
     })
     .then(res => res.json())
