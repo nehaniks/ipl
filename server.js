@@ -3,8 +3,17 @@ const app = express();
 const port = process.env.PORT || 8080;
 const absolutePath = __dirname + "/public/index.html";
 const data = require("./public/data.json");
+var cors = require('cors');
 
 app.use(express.static("public"));
+
+app.use(
+    cors({
+        credentials: true,
+        origin: true
+    })
+);
+app.options('*', cors());
 
 app.get("/", function (req, res) {
     res.sendFile(absolutePath);

@@ -14,11 +14,10 @@ function onSubmit() {
     document.getElementById("error").hidden = false;
   } else {
     console.log("Correct input");
-    //visualizeExtraRunsByEachTeam(data);
-  }
-  fetch(`/json?year=${season}`)
+    fetch(`/json?year=${season}`)
     .then(res => res.json())
     .then(data => visualizeExtraRunsByEachTeam(data));
+  }
 }
 
 function visualizeData(data) {
