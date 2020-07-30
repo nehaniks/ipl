@@ -8,17 +8,15 @@ fetchAndVisualizeData();
 
 document.getElementById("submit").addEventListener("click", onSubmit);
 function onSubmit() {
-  console.log("Submitted");
   var season = Number(document.getElementById("season").value);
   if (season < 2008 || season > 2019) {
     document.getElementById("error").hidden = false;
   } else {
-    console.log("Correct input");
     let url = `/json?year=${season}`;
+    console.log(season, url);
     fetch(url, {
-      method: 'GET'
-    })
-    .then(res => res.json())
+      method: 'GET',
+    }).then(res => res.json())
     .then(data => visualizeExtraRunsByEachTeam(data));
   }
 }
